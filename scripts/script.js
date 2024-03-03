@@ -14,6 +14,7 @@ function loadAllPosts() {
 function displayAllPhones(posts) {
   const allPostsContainer = document.getElementById('all-posts-container');
   posts.forEach(post => {
+    // create card
     const postCard = document.createElement('div');
     postCard.classList = 'p-4 md:p-10 bg-[#F3F3F5] rounded-3xl flex flex-col md:flex-row gap-6 border border-[#F3F3F5] hover:border hover:border-secondary-color hover:bg-[#797dfc1a] transition-all';
     postCard.innerHTML = `
@@ -46,12 +47,38 @@ function displayAllPhones(posts) {
             <span class="opacity-60">${post.posted_time} min</span>
           </div>
         </div>
-        <div class="cursor-pointer">
+        <div onclick="handleMarkAsRead('${post.title}', ${post.view_count})" class="cursor-pointer">
           <img src="./assets/icons/envelope.svg" alt="">
         </div>
       </div>
     </div>
     `;
+
+    // append card to the card container
     allPostsContainer.appendChild(postCard);
   });
+}
+
+// mark as read handler
+function handleMarkAsRead(title, viewCount) {
+  const markAsReadContainer = document.getElementById('mark-as-read-container');
+  const markAsReadCount = document.getElementById('mark-as-read-count');
+
+  // create item
+  const readItem = document.createElement('div');
+  readItem.classList = 'bg-white p-4 flex justify-between gap-1';
+  readItem.innerHTML = `
+  <h4 class="font-semibold flex-1">${title}</h4>
+  <div class="flex items-center gap-3">
+    <img src="./assets/icons/eye.svg" alt="">
+    <span class="opacity-80">${viewCount}</span>
+  </div>
+  `;
+
+  // add to the container
+  markAsReadContainer.appendChild(readItem);
+
+  // update mark as read count
+  let readCount = parseInt(markAsReadCount.innerText);
+  markAsReadCount.innerText = readCount + 1;
 }
