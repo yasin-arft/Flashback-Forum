@@ -8,3 +8,10 @@
 .font-inter {
   font-family: "Inter", sans-serif;
 }
+
+.forum-name {
+  background: -webkit-linear-gradient(60deg, #797DFCFF 70%, #797DFC00);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
