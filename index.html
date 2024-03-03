@@ -32,8 +32,8 @@
   <header class="container mx-auto px-4">
     <!-- navbar start -->
     <nav class="pt-5">
-      <div class="navbar bg-base-100">
-        <div class="flex-1">
+      <div class="navbar">
+        <div class="navbar-start flex-1">
           <div class="dropdown">
             <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -48,7 +48,7 @@
               <li class="tooltip" data-tip="Profile"><a class="p-4 border-[1.5px] border-[#12132d99] rounded-full"><img src="./assets/icons/flag.svg" alt="home"></a></li>
             </ul>
           </div>
-          <a class="btn btn-ghost text-4xl font-black">FlashBack</a>
+          <a class="btn btn-ghost pl-0 text-xl md:text-3xl lg:text-4xl font-black">FlashBack</a>
         </div>
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal gap-3">
@@ -58,12 +58,38 @@
             <li class="tooltip" data-tip="Profile"><a class="p-4 border-[1.5px] border-[#12132d99] rounded-full"><img src="./assets/icons/flag.svg" alt="home"></a></li>
           </ul>
         </div>
-        <div>
-          <a class="btn rounded-full px-10 py-4 bg-secondary-color text-white text-xl font-bold h-auto">Sign In</a>
+        <div class="navbar-end w-auto">
+          <a class="btn rounded-full px-6 md:px-8 lg:px-10 py-2 md:py-4 bg-secondary-color text-white text-lg md:text-xl font-bold h-auto">Sign In</a>
         </div>
       </div>
     </nav>
     <!-- navbar end -->
+
+    <!-- banner section -->
+    <section class="bg-primary-color bg-[url('./assets/images/bgbanner.png')] bg-no-repeat bg-bottom bg-contain rounded-[32px] mt-5">
+      <div class="hero md:p-10 lg:p-16 xl:p-24">
+        <div class="hero-content flex-col lg:flex-row gap-4">
+          <div class="flex-1 text-white text-center lg:text-left">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold">Welcome to the FlashBack Forum</h1>
+            <p class="py-6 font-medium text-xl opacity-80 max-w-md mx-auto lg:mx-0">
+              Share your favorite opinion and win and wp forum coffee mug!
+            </p>
+            <label class="input input-bordered mx-auto lg:mx-0 flex items-center gap-2 max-w-sm rounded-full py-[6px] pr-1 h-auto">
+              <input type="text" class="grow text-primary-color" placeholder="Search here anything" />
+              <button class="btn rounded-full bg-secondary-color text-white text-xl font-bold h-auto px-7">Search</button>
+            </label>
+          </div>
+          <div class="w-full md:w-4/5 lg:flex-1">
+            <ul class="bg-white p-6 md:p-8 lg:p-12 rounded-[32px] font-medium text-2xl text-primary-color space-y-4">
+              <li class="flex justify-between">Registered Users <span>01</span></li>
+              <li class="flex justify-between">Forum <span>05</span></li>
+              <li class="flex justify-between">Topics <span>01</span></li>
+              <li class="flex justify-between">Replies <span>01</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
   </header>
   <!-- header end -->
 
