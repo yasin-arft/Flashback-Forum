@@ -49,7 +49,7 @@ function displayAllPosts(posts) {
             <span class="opacity-60">${post.posted_time} min</span>
           </div>
         </div>
-        <div onclick="handleMarkAsRead('${post.title}', ${post.view_count})" class="cursor-pointer">
+        <div onclick="handleMarkAsRead(&quot;${post.title}&quot;, ${post.view_count})" class="cursor-pointer">
           <img src="./assets/icons/envelope.svg" alt="">
         </div>
       </div>
