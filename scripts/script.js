@@ -14,6 +14,7 @@ function loadAllPosts() {
 // displaying all posts 
 function displayAllPosts(posts) {
   const allPostsContainer = document.getElementById('all-posts-container');
+  allPostsContainer.innerHTML = '';
   posts.forEach(post => {
     // create card
     const postCard = document.createElement('div');
@@ -99,7 +100,6 @@ function displayLatestPosts(posts) {
     // append card to the card container
     latestPostContainer.appendChild(postCard);
   })
-  console.log(posts, latestPostContainer);
 }
 
 // mark as read handler
@@ -124,4 +124,21 @@ function handleMarkAsRead(title, viewCount) {
   // update mark as read count
   let readCount = parseInt(markAsReadCount.innerText);
   markAsReadCount.innerText = readCount + 1;
+}
+
+// search handler 
+function handleSearch() {
+  const searchInput = document.getElementById('search-input');
+  const searchText = searchInput.value.toLowerCase();
+  const loadingSpinner = document.getElementById('loading-spinner');
+  loadingSpinner.classList.remove('hidden');
+  setTimeout(() => loadingSpinner.classList.add('hidden'), 2000);
+  loadSearchPosts(searchText);
+}
+
+// loading searched posts
+function loadSearchPosts(searchText) {
+  fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchText}`)
+    .then(res => res.json())
+    .then(data => displayAllPosts(data.posts));
 }

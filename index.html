@@ -89,8 +89,8 @@
             </p>
             <label
               class="input input-bordered mx-auto lg:mx-0 flex items-center gap-2 max-w-sm rounded-full py-[6px] pr-1 h-auto">
-              <input type="text" class="w-10 grow text-primary-color" placeholder="Search here anything" />
-              <button
+              <input id="search-input" type="text" class="w-10 grow text-primary-color" placeholder="Search here anything" />
+              <button onclick="handleSearch()"
                 class="btn rounded-full bg-secondary-color text-white text-xl font-bold h-auto px-7">Search</button>
             </label>
           </div>
@@ -117,6 +117,10 @@
         <p class="text-lg mt-6 max-w-2xl mx-auto">Yes, you can run unit tests and view the results directly within the
           app. The integrated testing features
           allow for a streamlined .</p>
+      </div>
+      <!-- loading spinner -->
+      <div id="loading-spinner" class="flex justify-center items-center h-24 hidden">
+        <span class="loading loading-spinner loading-md"></span>
       </div>
       <div class="flex flex-col lg:flex-row gap-6 mt-6 md:mt-8 lg:mt-10 xl:mt-12">
         <!-- card container -->
