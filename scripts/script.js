@@ -1,17 +1,18 @@
 // onload handler
 onload = () => {
   loadAllPosts();
+  loadLatestPost();
 }
 
 // loading all posts
 function loadAllPosts() {
   fetch('https://openapi.programming-hero.com/api/retro-forum/posts')
     .then(res => res.json())
-    .then(data => displayAllPhones(data.posts))
+    .then(data => displayAllPosts(data.posts));
 }
 
 // displaying all posts 
-function displayAllPhones(posts) {
+function displayAllPosts(posts) {
   const allPostsContainer = document.getElementById('all-posts-container');
   posts.forEach(post => {
     // create card
@@ -57,6 +58,48 @@ function displayAllPhones(posts) {
     // append card to the card container
     allPostsContainer.appendChild(postCard);
   });
+}
+
+// loading latest posts
+function loadLatestPost() {
+  fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts')
+    .then(res => res.json())
+    .then(data => displayLatestPosts(data));
+}
+
+// displaying latest posts
+function displayLatestPosts(posts) {
+  const latestPostContainer = document.getElementById('latest-post-container');
+  posts.forEach(post => {
+    // create card
+    const postCard = document.createElement('div');
+    postCard.classList = 'card p-6 border border-[#12132d26]';
+    postCard.innerHTML = `
+    <figure>
+      <img src="${post.cover_image}" alt="Shoes"
+        class="rounded-2xl" />
+    </figure>
+    <div class="mt-6 flex flex-col flex-1">
+      <div class="flex gap-3 items-center">
+        <img src="./assets/icons/calender.svg" alt="">
+        <span class="opacity-60">${post.author.posted_date ?? 'No publish date'}</span>
+      </div>
+      <h2 class="card-title text-lg font-semibold my-3">${post.title}</h2>
+      <p class="flex-1 opacity-60">${post.description}</p>
+      <div class="flex items-center gap-4 mt-4">
+        <img class="rounded-full size-11" src="${post.profile_image}">
+        <div>
+          <h4 class="font-bold">${post.author.name}</h4>
+          <p class="text-sm opacity-60">${post.author.designation ?? 'Unknown'}</p>
+        </div>
+      </div>
+    </div>
+    `;
+
+    // append card to the card container
+    latestPostContainer.appendChild(postCard);
+  })
+  console.log(posts, latestPostContainer);
 }
 
 // mark as read handler
